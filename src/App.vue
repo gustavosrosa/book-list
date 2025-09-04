@@ -1,6 +1,7 @@
 <script setup>
 
 import { ref, reactive } from 'vue';
+import Progress from './components/Progress.vue';
 
 // ref para primitivos (números, strings, dentre outros)
 let count = ref(0);
@@ -8,17 +9,20 @@ let count = ref(0);
 // reactive para objetos (é uma convenção)
 let courses = reactive([
   {
-    title: "JavaScript"
+    title: "JavaScript",
+    done: true,
   },
   {
-    title: "React"
+    title: "React",
+    done: false,
   },
   {
-    title: "Vue"
+    title: "Vue",
+    done: true,
   },
 ]);
 
-let newCourse = {};
+let newCourse = { done: false };
 
 function increment() {
   count.value++;
@@ -26,7 +30,7 @@ function increment() {
 
 function addCourse() {
   courses.push(newCourse);
-  newCourse = {};
+  newCourse = { done: false };
 }
 
 </script>
@@ -45,6 +49,8 @@ function addCourse() {
 
     <input type="text" v-model="newCourse.title">
     <button @click="addCourse()">Adicionar</button>
+
+    <Progress :courses="courses"></Progress>
 
   </div>
 </template>
