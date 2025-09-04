@@ -1,57 +1,73 @@
 <script setup>
-
-import { ref, reactive } from 'vue';
-import Progress from './components/Progress.vue';
-
-// ref para primitivos (números, strings, dentre outros)
-let count = ref(0);
-
-// reactive para objetos (é uma convenção)
-let courses = reactive([
+let books = [
   {
-    title: "JavaScript",
-    done: true,
+    id: 1,
+    title: "History of Europe",
+    cover:
+      "https://printpress.cmsmasters.net/default/wp-content/uploads/sites/11/2019/05/printpress-product-6-540x861.jpg",
+    isRead: true,
+    isbn: "0-395-07157-8",
+    author: "Daniel Trejo",
   },
   {
-    title: "React",
-    done: false,
+    id: 2,
+    title: "Penguin Classics",
+    cover:
+      "https://printpress.cmsmasters.net/default/wp-content/uploads/sites/11/2019/05/printpress-product-2-540x861.jpg",
+    isRead: false,
+    isbn: "0-395-07157-8",
+    author: "Daniel Trejo, Jon Snow",
   },
   {
-    title: "Vue",
-    done: true,
+    id: 3,
+    title: "Becoming",
+    cover:
+      "https://printpress.cmsmasters.net/default/wp-content/uploads/sites/11/2019/05/printpress-product-7-540x861.jpg",
+    isRead: false,
+    isbn: "0-395-07157-8",
+    author: "Daniel Trejo",
   },
-]);
-
-let newCourse = { done: false };
-
-function increment() {
-  count.value++;
-}
-
-function addCourse() {
-  courses.push(newCourse);
-  newCourse = { done: false };
-}
-
+  {
+    id: 4,
+    title: "Sonnets",
+    cover:
+      "https://printpress.cmsmasters.net/default/wp-content/uploads/sites/11/2019/05/printpress-product-5-540x861.jpg",
+    isRead: false,
+    isbn: "0-395-07157-8",
+    author: "Daniel Trejo",
+  },
+]
 </script>
 
 <template>
-  <div>
+  <div class="container">
+    <h1>📖 Meus Livros</h1>
+    <div class="header-btns">
+      <button class="btn">
+        Adicionar Livro +
+      </button>
+    </div>
 
-    <h1>{{ count }}</h1>
-    <button @click="increment">Incrementar</button>
+    <div class="books-container">
+      <div class="books-list">
+        <div class="book">
+          <div class="book-cover">
+            <img
+              src="https://printpress.cmsmasters.net/default/wp-content/uploads/sites/11/2019/05/printpress-product-7-540x861.jpg" />
 
-    <ul>
-      <li v-for="course in courses" :key="course.title">{{ course.title }}</li>
-    </ul>
-
-    <br>
-
-    <input type="text" v-model="newCourse.title">
-    <button @click="addCourse()">Adicionar</button>
-
-    <Progress :courses="courses"></Progress>
-
+            <button>
+              <i class="fa-solid fa-eye"></i>
+              <span>Ainda não li</span>
+            </button>
+          </div>
+          <div class="book-details">
+            <p class="book-author">Daniel Trejo</p>
+            <h3 class="book-title">History of Europe</h3>
+            <p><i class="fa-solid fa-hashtag icon"></i> 0-395-07157-8</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
