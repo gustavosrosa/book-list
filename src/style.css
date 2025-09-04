@@ -201,13 +201,16 @@ table tr th {
  
 .book .book-cover {
   position: relative;
+  max-height: 30em;
 }
 .book .book-cover img {
   width: 100%;
   height: 100%;
+  height: 30em;
   object-fit: cover;
   box-shadow: 0px 4px 11px 0px rgb(0 0 0 / 14%);
 }
+
  
 .book .book-cover:hover button {
   visibility: visible;

@@ -7,12 +7,15 @@
 <template>
     <div class="books-list">
         <div v-for="book in books" :key="book.isbn" class="book">
+          <div class="readIt" v-if="book.isRead">
+            <i class="fa-solid fa-eye"></i>
+          </div>  
           <div class="book-cover">
             <img :src="book.cover" />
 
-            <button>
+            <button :class="{ isRead: book.isRead }">
               <i class="fa-solid fa-eye"></i>
-              <span>Ainda não li</span>
+              <span>{{ book.isRead ? "Já li" : "Ainda não li"}}</span>
             </button>
           </div>
           <div class="book-details">
