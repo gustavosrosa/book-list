@@ -7,7 +7,7 @@
       id: 1,
       title: "History of Europe",
       cover:
-        "https://printpress.cmsmasters.net/default/wp-content/uploads/sites/11/2019/05/printpress-product-6-540x861.jpg",
+        "http://books.google.com/books/content?id=Pv1eUCKdP-QC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
       isRead: true,
       isbn: "0-395-07157-8",
       author: "Daniel Trejo",
@@ -16,7 +16,7 @@
       id: 2,
       title: "Penguin Classics",
       cover:
-        "https://printpress.cmsmasters.net/default/wp-content/uploads/sites/11/2019/05/printpress-product-2-540x861.jpg",
+        "http://books.google.com/books/content?id=MoS4BgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
       isRead: false,
       isbn: "0-395-07157-8",
       author: "Daniel Trejo, Jon Snow",
@@ -25,7 +25,7 @@
       id: 3,
       title: "Becoming",
       cover:
-        "https://printpress.cmsmasters.net/default/wp-content/uploads/sites/11/2019/05/printpress-product-7-540x861.jpg",
+        "http://books.google.com/books/content?id=CWZw-4UGpJ8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
       isRead: false,
       isbn: "0-395-07157-8",
       author: "Daniel Trejo",
@@ -34,7 +34,7 @@
       id: 4,
       title: "Sonnets",
       cover:
-        "https://printpress.cmsmasters.net/default/wp-content/uploads/sites/11/2019/05/printpress-product-5-540x861.jpg",
+        "http://books.google.com/books/content?id=eHqPaGHO2hIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
       isRead: false,
       isbn: "0-395-07157-8",
       author: "Daniel Trejo",
