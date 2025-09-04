@@ -24,6 +24,11 @@ function increment() {
   count.value++;
 }
 
+function addCourse() {
+  courses.push(newCourse);
+  newCourse = {};
+}
+
 </script>
 
 <template>
@@ -39,7 +44,7 @@ function increment() {
     <br>
 
     <input type="text" v-model="newCourse.title">
-    <button @click="courses.push(newCourse)">Adicionar</button>
+    <button @click="addCourse()">Adicionar</button>
 
   </div>
 </template>
