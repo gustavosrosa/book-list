@@ -6,13 +6,21 @@ import { computed } from 'vue';
    const booksRead = computed(() => {
     return props.books.filter((book) => book.isRead).length;
    });
+
+   const booksReadMessage = computed(() => {
+    return booksRead.value >= props.books.length ? 
+        "Parabéns, você leu todos os livros!" : 
+        `${booksRead.value} de ${props.books.length} livros lidos`
+   });
+
+
 </script>
 
 <template>
      <div class="books-read">
         <label for="progress">Seu progresso</label>
         <br>
-        <progress :value="booksRead" :max="books.length"></progress>
-        <p>{{ `${booksRead} de ${books.length} livros lidos` }}</p>
+        <progress v-if="booksRead != books.length" :value="booksRead" :max="books.length"></progress>
+        <p>{{ booksReadMessage }}</p>
     </div>
 </template>
