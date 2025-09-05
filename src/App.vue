@@ -1,8 +1,9 @@
 <script setup>
 
+  import AddBook from './components/AddBook.vue';
   import BookProgress from './components/BookProgress.vue';
   import Books from './components/Books.vue';
-  import { reactive } from 'vue';
+  import { ref, reactive } from 'vue';
 
   let books = reactive([
     {
@@ -43,6 +44,8 @@
     },
   ]);
 
+  let showAddBook = ref(false);
+
   function toggleIsRead(id) {
     books.forEach((book) => {
       if (id == book.id) {
@@ -54,10 +57,10 @@
 </script>
 
 <template>
-  <div class="container">
+  <div v-if="!showAddBook" class="container">
     <h1>📖 Meus Livros</h1>
     <div class="header-btns">
-      <button class="btn">
+      <button class="btn" @click="showAddBook = true">
         Adicionar Livro +
       </button>
     </div>
@@ -69,6 +72,10 @@
       <BookProgress :books="books"/>
       
     </div>
+  </div>
+
+  <div v-else class="container">
+    <AddBook @closeAddBook="showAddBook = false"/>
   </div>
 </template>
 
