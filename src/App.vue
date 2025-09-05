@@ -45,6 +45,7 @@
   ]);
 
   function addBook(newBook) {
+    newBook.id = Math.max(...books.map((book) => book.id)) + 1;
     books.push(newBook);
     showAddBook.value = false;
   }
