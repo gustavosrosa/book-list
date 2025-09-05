@@ -1,57 +1,87 @@
 <script setup>
 
-import { ref, reactive } from 'vue';
-import Progress from './components/Progress.vue';
+  import AddBook from './components/AddBook.vue';
+  import BookProgress from './components/BookProgress.vue';
+  import Books from './components/Books.vue';
+  import { ref, reactive } from 'vue';
 
-// ref para primitivos (números, strings, dentre outros)
-let count = ref(0);
+  let books = reactive([
+    {
+      id: 1,
+      title: "History of Europe",
+      cover:
+        "http://books.google.com/books/content?id=Pv1eUCKdP-QC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      isRead: true,
+      isbn: "0-395-07157-8",
+      author: "Daniel Trejo",
+    },
+    {
+      id: 2,
+      title: "Penguin Classics",
+      cover:
+        "http://books.google.com/books/content?id=MoS4BgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+      isRead: false,
+      isbn: "0-395-07157-8",
+      author: "Daniel Trejo, Jon Snow",
+    },
+    {
+      id: 3,
+      title: "Becoming",
+      cover:
+        "http://books.google.com/books/content?id=CWZw-4UGpJ8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      isRead: false,
+      isbn: "0-395-07157-8",
+      author: "Daniel Trejo",
+    },
+    {
+      id: 4,
+      title: "Sonnets",
+      cover:
+        "http://books.google.com/books/content?id=eHqPaGHO2hIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      isRead: false,
+      isbn: "0-395-07157-8",
+      author: "Daniel Trejo",
+    },
+  ]);
 
-// reactive para objetos (é uma convenção)
-let courses = reactive([
-  {
-    title: "JavaScript",
-    done: true,
-  },
-  {
-    title: "React",
-    done: false,
-  },
-  {
-    title: "Vue",
-    done: true,
-  },
-]);
+  function addBook(newBook) {
+    newBook.id = Math.max(...books.map((book) => book.id)) + 1;
+    books.push(newBook);
+    showAddBook.value = false;
+  }
 
-let newCourse = { done: false };
+  let showAddBook = ref(false);
 
-function increment() {
-  count.value++;
-}
-
-function addCourse() {
-  courses.push(newCourse);
-  newCourse = { done: false };
-}
+  function toggleIsRead(id) {
+    books.forEach((book) => {
+      if (id == book.id) {
+        book.isRead = !book.isRead;
+      }
+    })
+  }
 
 </script>
 
 <template>
-  <div>
+  <div v-if="!showAddBook" class="container">
+    <h1>📖 Meus Livros</h1>
+    <div class="header-btns">
+      <button class="btn" @click="showAddBook = true">
+        Adicionar Livro +
+      </button>
+    </div>
 
-    <h1>{{ count }}</h1>
-    <button @click="increment">Incrementar</button>
+    <div class="books-container">
 
-    <ul>
-      <li v-for="course in courses" :key="course.title">{{ course.title }}</li>
-    </ul>
+      <Books @toggleIsRead="toggleIsRead" :books="books"/>
 
-    <br>
+      <BookProgress :books="books"/>
+      
+    </div>
+  </div>
 
-    <input type="text" v-model="newCourse.title">
-    <button @click="addCourse()">Adicionar</button>
-
-    <Progress :courses="courses"></Progress>
-
+  <div v-else class="container">
+    <AddBook @addBook="addBook" @closeAddBook="showAddBook = false"/>
   </div>
 </template>
 
