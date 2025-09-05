@@ -19,9 +19,9 @@
             </button>
           </div>
           <div class="book-details">
-            <p class="book-author">{{ book.author}} </p>
+            <p class="book-author" v-if="book.author">{{ book.author}} </p>
             <h3 class="book-title">{{ book.title }}</h3>
-            <p><i class="fa-solid fa-hashtag icon"></i>{{ book.isbn }}</p>
+            <p v-if="book.isbn"><i class="fa-solid fa-hashtag icon"></i>{{ book.isbn }}</p>
           </div>
         </div>
       </div>

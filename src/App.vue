@@ -44,6 +44,11 @@
     },
   ]);
 
+  function addBook(newBook) {
+    books.push(newBook);
+    showAddBook.value = false;
+  }
+
   let showAddBook = ref(false);
 
   function toggleIsRead(id) {
@@ -75,7 +80,7 @@
   </div>
 
   <div v-else class="container">
-    <AddBook @closeAddBook="showAddBook = false"/>
+    <AddBook @addBook="addBook" @closeAddBook="showAddBook = false"/>
   </div>
 </template>
 
